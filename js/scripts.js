@@ -12,6 +12,7 @@ var winningCombos = [
   [6,4,2],
   [0,4,8],
 ];
+
 // constructor function for a Board Object
 function Board(clickedSquares) {
   this.clickedSquares = clickedSquares;
@@ -26,7 +27,9 @@ function Player(symbol, selected) {
 }
 // initialize new player(with their symbol, and empty array for their selections)
 var playerX = new Player("X", []);
+var playerO = new Player("O", []);
 
+var currentPlayer = playerX;
 // create prototype to check if player's selections contain any winning combo
 Player.prototype.isVictorious = function() {
   // Create empty wins array to store number of successful selections
@@ -35,7 +38,7 @@ Player.prototype.isVictorious = function() {
   for (var i = 0; i < winningCombos.length; i++) {
     var wins = [];
     winningCombos[i].forEach(function(numberInCombo){
-     	if ($.inArray(numberInCombo, playerX.selected) != -1) {
+     	if ($.inArray(numberInCombo, currentPlayer.selected) != -1) {
      	wins.push(2);
      	} else {
      	wins.push(1);
@@ -56,16 +59,27 @@ $(document).ready(function() {
 
   // when the user clicks a square...
   $(".square").click(function() {
+
+    // check number of squares clicked
     newBoard.clickedSquares += 1;
     if (newBoard.clickedSquares === 9) {
       alert("Tie Game");
     }
+
+    if (currentPlayer === playerX) {
+      $(this).css("background-color", "blue");
+      currentPlayer = playerO;
+    } else {
+      $(this).css("background-color", "red");
+      currentPlayer = playerX;
+    }
     // assign the VALUE of THIS particular square to a variable
     var squareValue = parseInt($(this).attr('data-value'));
     // push this value to the players selected array
-    playerX.selected.push(squareValue);
+    currentPlayer.selected.push(squareValue);
+    console.log(currentPlayer);
     // call prototype
-    playerX.isVictorious();
+    currentPlayer.isVictorious();
   });
 });
 
