@@ -1,0 +1,11 @@
+#board {
+  width: 600px;
+  height: 600px;
+}
+.square {
+  width: 32%;
+  height: 32%;
+  padding: 2px;
+  border: solid 1px black;
+  display: inline-block;
+}
