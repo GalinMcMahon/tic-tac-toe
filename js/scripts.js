@@ -30,6 +30,7 @@ var playerX = new Player("X", []);
 var playerO = new Player("O", []);
 
 var currentPlayer = playerX;
+
 // create prototype to check if player's selections contain any winning combo
 Player.prototype.isVictorious = function() {
   // Create empty wins array to store number of successful selections
@@ -47,25 +48,37 @@ Player.prototype.isVictorious = function() {
     if (wins[0] * wins[1] * wins[2] === 8) {
       alert("Winner");
     } console.log("Not Winner");
+
   }
 }
-
-
 // ----------------------------------- UI LOGIC
 // ----------------------------------- UI LOGIC
 // ----------------------------------- UI LOGIC
 
 $(document).ready(function() {
 
-  // when the user clicks a square...
-  $(".available").one('click', function() {
-
-    $(this).removeClass("available");
+// $("#singlePlayer").click(function() {
+//   numPlayers=(data-value);
+//
+//   if (data-value === 10) {
+//     var arrayRemain=[0, 1, 2, 3, 4, 5, 6, 7, 8];
+//     var singlePlayer = function(singlePlayer) {
+//       if (newBoard.clickedSquares %2 === 0) {
+//       var random=select Math.random[arrayRemain]
+//       click(".square")=('data-value'===random)
+//     }
+//       arrayRemain.splice(random, 1);
+//
+//     });
+//   });
+  // when the user clicks a square one time (unclickable after bc of .one)...
+  $(".square").one('click', function() {
 
     // check number of squares clicked
     newBoard.clickedSquares += 1;
     if (newBoard.clickedSquares === 9) {
-      alert("Tie Game");
+      $("#cat").show();
+      $("#board").hide();
     }
 
     if (currentPlayer === playerX) {

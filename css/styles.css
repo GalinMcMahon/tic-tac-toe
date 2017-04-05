@@ -12,3 +12,23 @@
   border: solid 1px black;
   display: inline-block;
 }
+
+#cat {
+  display: none;
+  width: 600px;
+  height: 600px;
+}
+
+#bluewin {
+  display: none;
+  width: 600px;
+}
+
+#redwin {
+  display: none;
+  height: 600px;
+}
+
+.playerSelect {
+  margin-bottom: 20px;
+}
