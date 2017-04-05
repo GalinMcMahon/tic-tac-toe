@@ -58,7 +58,9 @@ Player.prototype.isVictorious = function() {
 $(document).ready(function() {
 
   // when the user clicks a square...
-  $(".square").click(function() {
+  $(".available").one('click', function() {
+
+    $(this).removeClass("available");
 
     // check number of squares clicked
     newBoard.clickedSquares += 1;
