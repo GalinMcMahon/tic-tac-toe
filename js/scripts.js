@@ -12,8 +12,13 @@ var winningCombos = [
   [6,4,2],
   [0,4,8],
 ];
-
-// constructer function for a Player Object
+// constructor function for a Board Object
+function Board(clickedSquares) {
+  this.clickedSquares = clickedSquares;
+}
+// initialize new board Object
+var newBoard = new Board(0);
+// constructor function for a Player Object
 function Player(symbol, selected) {
   this.symbol = symbol;
   // selected holds the values of the squares this player clicked
@@ -51,6 +56,10 @@ $(document).ready(function() {
 
   // when the user clicks a square...
   $(".square").click(function() {
+    newBoard.clickedSquares += 1;
+    if (newBoard.clickedSquares === 9) {
+      alert("Tie Game");
+    }
     // assign the VALUE of THIS particular square to a variable
     var squareValue = parseInt($(this).attr('data-value'));
     // push this value to the players selected array
