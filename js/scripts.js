@@ -40,7 +40,7 @@ Player.prototype.isVictorious = function() {
   for (var i = 0; i < winningCombos.length; i++) {
     var wins = [];
     winningCombos[i].forEach(function(numberInCombo){
-      if ($.inArray(numberInCombo, currentPlayer.selected) != -1) {
+      if ($.inArray(numberInCombo, currentPlayer.selected) !== -1) {
         wins.push(2);
       } else {
         wins.push(1);
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
       // check number of squares clicked
       newBoard.clickedSquares += 1;
-      if (newBoard.clickedSquares === 9 && (currentPlayer.isVictorious() != true) ) {
+      if (newBoard.clickedSquares === 9 && (currentPlayer.isVictorious() !== true) ) {
         $("#tie").show();
         $("#tie").html("<div id='game-over'>"
                         + "Cat's Game!"
@@ -136,9 +136,9 @@ $(document).ready(function() {
       if (currentPlayer.isVictorious() === true) {
         $("#winner").show();
         $("#winner").html("<div id='game-over'>"
-                        + "Player "
+                        + ""
                         + currentPlayer.symbol
-                        + " wins the game!"
+                        + " player wins the game!"
                         + "<br><br>"
                         + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
                         + "</div>"
@@ -190,9 +190,9 @@ $(document).ready(function() {
       if (currentPlayer.isVictorious() === true) {
         $("#winner").show();
         $("#winner").html("<div id='game-over'>"
-                        + "Player "
+                        + ""
                         + currentPlayer.symbol
-                        + " wins the game!"
+                        + " player wins the game!"
                         + "<br><br>"
                         + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
                         + "</div>"

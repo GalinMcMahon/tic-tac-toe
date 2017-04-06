@@ -1,5 +1,8 @@
-* {
+*,
+.container {
   margin: 0;
+  background-color: #e6ffe6;
+  width: 100%;
 }
 .dontshow {
   display: none;
@@ -18,6 +21,7 @@
   height: 600px;
 }
 .square {
+  background-color: #008000;
   width: 32%;
   height: 32%;
   padding: 2px;
@@ -46,14 +50,20 @@
   cursor: pointer;
   width: auto;
   display: inline-block;
+  background-color: #ccffcc;
 }
 .end-game .reset-button {
   border: solid 1px white;
 }
 #game-over {
+  text-align: center;
   width: 90%;
   max-width: 600px;
   margin: 100px auto 0 auto;
-  color: white;
   font-size: 24px;
+}
+
+h1 {
+  font-family: 'Sigmar One', cursive;
+  align-content: center;
 }
