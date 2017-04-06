@@ -1,6 +1,9 @@
 * {
   margin: 0;
 }
+.dontshow {
+  display: none;
+}
 #board {
   width: 600px;
   height: 600px;
@@ -11,24 +14,24 @@
   padding: 2px;
   border: solid 1px black;
   display: inline-block;
+  transition: all 0.5s;
+  margin-right: 1%;
 }
-
+.blue {
+  background-color: blue;
+}
+.red {
+  background-color: red;
+}
 #cat {
   display: none;
   width: 600px;
   height: 600px;
 }
-
-#bluewin {
-  display: none;
-  width: 600px;
-}
-
-#redwin {
-  display: none;
-  height: 600px;
-}
-
-.playerSelect {
-  margin-bottom: 20px;
+#one-player, #two-players, #reset-button {
+  border: solid 1px black;
+  padding: 10px;
+  cursor: pointer;
+  width: auto;
+  display: inline-block;
 }
