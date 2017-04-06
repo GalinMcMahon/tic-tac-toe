@@ -37,10 +37,23 @@
   width: 600px;
   height: 600px;
 }
-#one-player, #two-players, #reset-button {
+#one-player,
+#two-players,
+#board .reset-button,
+.end-game .reset-button {
   border: solid 1px black;
   padding: 10px;
   cursor: pointer;
   width: auto;
   display: inline-block;
+}
+.end-game .reset-button {
+  border: solid 1px white;
+}
+#game-over {
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto 0 auto;
+  color: white;
+  font-size: 24px;
 }
