@@ -47,17 +47,7 @@ Player.prototype.isVictorious = function() {
       }
     });
     if (wins[0] * wins[1] * wins[2] === 8) {
-
-      $("#winner").show();
-      // all this should be refactored into UI logic, but we are using this while we test
-      $("#winner").html("<div id='game-over'>"
-                      + "Player "
-                      + currentPlayer.symbol
-                      + " wins the game!"
-                      + "<br><br>"
-                      + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
-                      + "</div>"
-                    );
+      return true;
     } // end if a player wins
   } // end loop through winningCombos array
 } // end prototype
@@ -91,11 +81,6 @@ $(document).ready(function() {
     $("#board").fadeIn();
 
     $(".square").one('click', function() {
-      // check number of squares clicked
-      newBoard.clickedSquares += 1;
-      // if (newBoard.clickedSquares === 9 && (playerO.isVictorious() === false && playerX.isVictorious() === false)) {
-      //   $("#tie").show();
-      // }
 
       // change players each successful click
       if (currentPlayer === playerX) {
@@ -135,6 +120,30 @@ $(document).ready(function() {
       }
       // call prototype
       currentPlayer.isVictorious();
+
+      // check number of squares clicked
+      newBoard.clickedSquares += 1;
+      if (newBoard.clickedSquares === 9 && (currentPlayer.isVictorious() != true) ) {
+        $("#tie").show();
+        $("#tie").html("<div id='game-over'>"
+                        + "Cat's Game!"
+                        + "<br><br>"
+                        + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
+                        + "</div>"
+                      );
+      } // end tie result
+
+      if (currentPlayer.isVictorious() === true) {
+        $("#winner").show();
+        $("#winner").html("<div id='game-over'>"
+                        + "Player "
+                        + currentPlayer.symbol
+                        + " wins the game!"
+                        + "<br><br>"
+                        + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
+                        + "</div>"
+                      );
+      }
     }); // end square click function
   }); // end one-player click function
 
@@ -147,11 +156,7 @@ $(document).ready(function() {
     $("#board").fadeIn();
     // when the user clicks a square one time (unclickable after bc of .one() function)...
     $(".square").one('click', function() {
-      // check number of squares clicked
-      newBoard.clickedSquares += 1;
-      // if (newBoard.clickedSquares === 9 && currentPlayer.isVictorious() === false) {
-      //   $("#tie").show();
-      // }
+
       // change players each successful click
       if (currentPlayer === playerX) {
         $(this).addClass("blue");
@@ -169,6 +174,30 @@ $(document).ready(function() {
       console.log(newBoard);
       // call prototype
       currentPlayer.isVictorious();
+
+      // check number of squares clicked
+      newBoard.clickedSquares += 1;
+      if (newBoard.clickedSquares === 9 && (currentPlayer.isVictorious() != true) ) {
+        $("#tie").show();
+        $("#tie").html("<div id='game-over'>"
+                        + "Cat's Game!"
+                        + "<br><br>"
+                        + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
+                        + "</div>"
+                      );
+      } // end tie result
+
+      if (currentPlayer.isVictorious() === true) {
+        $("#winner").show();
+        $("#winner").html("<div id='game-over'>"
+                        + "Player "
+                        + currentPlayer.symbol
+                        + " wins the game!"
+                        + "<br><br>"
+                        + "<div class='reset-button' onClick='window.location.reload()'>Play Again</div>"
+                        + "</div>"
+                      );
+      }
     }); // end square click function
   }); // end two-players click function
 }); // end document ready function
