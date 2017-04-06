@@ -46,8 +46,9 @@ Player.prototype.isVictorious = function() {
       }
     });
     if (wins[0] * wins[1] * wins[2] === 8) {
-      alert("Winner");
-    } console.log("Not Winner");
+      $("#winner").show();
+      $("#winner").html("Player " + currentPlayer.symbol + " wins the game!" + "<br><br>" + "<div id='reset-button' onClick='window.location.reload()'>Play Again</div>");
+    }
 
   }
 }
@@ -58,15 +59,6 @@ var makeBoard = function() {
     $("#board").append("<div class='square' data-value='" + i + "'></div>");
   }
   $("#board").append("<div id='reset-button' onClick='window.location.reload()'>New Game</div>");
-}
-
-// create a function to reset the game
-var reset = function() {
-  playerX.selected = [];
-  playerO.selected = [];
-  newBoard.clickedSquares = 0;
-  $("#board").html("");
-  makeBoard();
 }
 
 
@@ -94,8 +86,7 @@ $(document).ready(function() {
       // check number of squares clicked
       newBoard.clickedSquares += 1;
       if (newBoard.clickedSquares === 9) {
-        // $("#board").hide();
-        // $("#cat").show();
+        $("#tie").show();
       }
       // change players each successful click
       if (currentPlayer === playerX) {
@@ -114,11 +105,6 @@ $(document).ready(function() {
       currentPlayer.isVictorious();
     }); // end square click function
   }); // end two-players click function
-  //reset new game
-  $("#reset-button").click(function() {
-    reset();
-    alert();
-  });
 }); // end document ready function
 
 
